@@ -36,4 +36,6 @@ Route::controller(FamilyController::class)->group(function () {
     Route::get('/keluarga', 'index')->name('pegawai.keluarga.index');
 
     Route::get('/keluarga/{employee}/get', 'getFamilyData');
+
+    Route::post('/keluarga/store/{employee}', 'store')->name('pegawai.keluarga.store');
 });

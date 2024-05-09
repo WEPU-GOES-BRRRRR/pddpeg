@@ -28,4 +28,23 @@ class FamilyController extends Controller
         ])->get()->all();
         return response()->json($fammilies);
     }
+
+    public function store(Request $request, Employee $employee)
+    {
+        Family::insert([
+            'employee_id' => $employee->id,
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'place_of_birth' => $request->place_of_birth,
+            'day_of_birth' => $request->day_of_birth,
+            'status' => $request->status,
+            'created_at' => now('Asia/Jakarta')
+        ]);
+        return response()->json([
+            'title' => 'Menambahkan data keluarga',
+            'icon' => 'success',
+            'text' => 'Berhasil menambahkan data keluarga!',
+            'id' => $employee->id
+        ]);
+    }
 }
